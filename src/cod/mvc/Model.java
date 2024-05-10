@@ -34,8 +34,7 @@ public class Model {
      * @param velocidad Nueva velocidad
      */
     public void cambiarVelocidad(String matricula, double velocidad) {
-        Coche coche = getCoche(matricula);
-        coche.setVelocidad(velocidad);
+        getCoche(matricula).setVelocidad(velocidad);
     }
 
     /**
