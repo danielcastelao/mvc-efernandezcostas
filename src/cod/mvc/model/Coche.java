@@ -1,28 +1,27 @@
-package cod.mvc;
+package cod.mvc.model;
 
 public class Coche {
     private String matricula;
     private String modelo;
-    private double velocidad;
+    private int velocidad;
 
-    public Coche(String matricula, String modelo, double velocidad) {
+    public Coche(String matricula, String modelo) {
         this.matricula = matricula;
         this.modelo = modelo;
-        this.velocidad = velocidad;
+        this.velocidad = 0;
     }
 
     public String getMatricula() {
         return matricula;
     }
 
-    public void setVelocidad(double velocidad) {
+    public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
-    public double getVelocidad() {
+    public int getVelocidad() {
         return velocidad;
     }
-
 
     @Override
     public boolean equals(Object obj) {
