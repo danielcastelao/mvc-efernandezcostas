@@ -1,13 +1,22 @@
 package cod.mvc.model;
 
-public class Coche {
-    private String matricula;
-    private String modelo;
-    private int velocidad;
 
-    public Coche(String matricula, String modelo) {
-        this.matricula = matricula;
+/**
+ * Clase Coche
+ */
+public class Coche {
+    public String matricula;
+    public String modelo;
+    public Integer velocidad;
+
+    /**
+     *
+     * @param modelo del coche
+     * @param matricula cel coche
+     */
+    public Coche(String modelo, String matricula) {
         this.modelo = modelo;
+        this.matricula = matricula;
         this.velocidad = 0;
     }
 
@@ -15,19 +24,23 @@ public class Coche {
         return matricula;
     }
 
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
-    public int getVelocidad() {
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public Integer getVelocidad() {
         return velocidad;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this)    return true;
-        if (obj == null || obj.getClass() != this.getClass())   return false;
-        Coche coche = (Coche) obj;
-        return this.matricula.equals(coche.matricula);
+    public void setVelocidad(Integer velocidad) {
+        this.velocidad = velocidad;
     }
 }

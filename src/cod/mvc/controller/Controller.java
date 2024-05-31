@@ -3,27 +3,48 @@ package cod.mvc.controller;
 import cod.mvc.model.Model;
 import cod.mvc.view.View;
 
-public class Controller {
-    private Model model;
-    private View view;
+public class Controller{
 
-    public Controller(Model model){
-        this.model = model;
-        this.view = new View();
+    // definimos la instancia del modelo
+    private final Model miModel;
 
-        ObserverVelocidad observerVelocidad = new ObserverVelocidad();
-        model.addObserver(observerVelocidad);
+    /**
+     * Constructor. Inicializamos el controller
+     * Creamos los observadores que necesitamos
+     * @param miModel
+     */
+    public Controller(Model miModel){
+        this.miModel = miModel;
 
-        ObserverLimiteVelocidad observerLimiteVelocidad = new ObserverLimiteVelocidad();
-        model.addObserver(observerLimiteVelocidad);
+        // instanciamos al observador de la velocidad
+        ObserverVelocidad observoVelocidad = new ObserverVelocidad();
+        miModel.addObserver(observoVelocidad);
+
+        // instanciamos un segundo observador para el limite de velocidad
+        ObserverLimiteVelocidad observoLimite = new ObserverLimiteVelocidad();
+        miModel.addObserver(observoLimite);
     }
 
-    public void crearCoche(String matricula, String modelo){
-        model.crearCoche(matricula, modelo);
+    /**
+     * Crea un coche
+     * @param nombre del coche
+     * @param matricula del coche
+     */
+    public void crearCoche(String nombre, String matricula){
+        miModel.crearCoche(nombre, matricula);
     }
 
-    public void cambiarVelocidad(String matricula, int velocidad){
-        model.cambiarVelocidad(matricula, velocidad);
+    /**
+     * Cambia la velocidad de un coche
+     * @param matricula del coche
+     * @param velocidad nueva
+     */
+    public void cambiarVelocidad(String matricula, Integer velocidad){
+        miModel.cambiarVelocidad(matricula, velocidad);
     }
+
+
+
+
 
 }
