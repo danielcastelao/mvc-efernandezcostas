@@ -1,7 +1,6 @@
 package cod.mvc.controller;
 
 import cod.mvc.model.Model;
-import cod.mvc.view.View;
 
 public class Controller{
 
@@ -14,7 +13,7 @@ public class Controller{
      * @param miModel
      */
     public Controller(Model miModel){
-        this.miModel = miModel;
+        this.miModel = Model.getInstance();
 
         // instanciamos al observador de la velocidad
         ObserverVelocidad observoVelocidad = new ObserverVelocidad();

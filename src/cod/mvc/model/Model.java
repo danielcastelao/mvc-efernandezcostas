@@ -11,11 +11,22 @@ import java.util.ArrayList;
  * El Model será el encargado de notificar a los observadores
  */
 public class Model implements Observable {
+    private static Model instance = null;
+
     // array de coches
     static ArrayList<Coche> parking = new ArrayList<>();
 
     // para los observadores
     private static final ArrayList<Observer> observers = new ArrayList<Observer>();
+
+    private Model(){ }
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
 
     @Override
     public void addObserver(Observer observer) {
