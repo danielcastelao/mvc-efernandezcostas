@@ -29,5 +29,12 @@ public class App {
         // sobrepasando la velocidad máxima
         miController.cambiarVelocidad("JFK 9876", 140);
 
+        // Buscar un coche por su matrícula
+        miController.buscarCoche();
+
+        // Cambiar la velocidad de un coche para volver a buscarlo
+        miController.cambiarVelocidad("SPQ 5432", 100);
+        miController.buscarCoche();
+
     }
 }

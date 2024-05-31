@@ -1,6 +1,8 @@
 package cod.mvc.controller;
 
+import cod.mvc.model.Coche;
 import cod.mvc.model.Model;
+import cod.mvc.view.View;
 
 public class Controller{
 
@@ -42,8 +44,18 @@ public class Controller{
         miModel.cambiarVelocidad(matricula, velocidad);
     }
 
+    /**
+     * Busca un coche y muestra sus datos en view por su matrícula
+     */
+    public void buscarCoche(){
+        String matricula = View.solicitarMatriculaDelCoche();
 
-
-
-
+        System.out.println("[Controller] Buscando coche con matrícula "+matricula);
+        Coche coche = miModel.getCoche(matricula);
+        if (coche == null){
+            View.mensajeCocheInexistente(matricula);
+        } else {
+            View.mostrarDatosCoche(matricula, coche.modelo, coche.velocidad);
+        }
+    }
 }
