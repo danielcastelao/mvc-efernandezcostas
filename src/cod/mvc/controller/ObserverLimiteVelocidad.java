@@ -15,11 +15,17 @@ public class ObserverLimiteVelocidad implements Observer {
      */
     @Override
     public void update(Coche coche, Model model) {
+        /* Si la velocidad se pasa del límite va bajando de 10 en 10 */
         if(coche.velocidad>LIMITE){
             System.out.println("INFRACCION"+
                     "\nSe ha reducido la velocidad");
-            model.cambiarVelocidad(coche.matricula, coche.velocidad-10);
+            model.bajarVelocidad(coche.matricula, 10);
+        }
 
+        /* Si la velocidad llega a ser negativa, se pone velocidad 0 */
+        if (coche.velocidad<0){
+            System.out.println("INFRACCION\nLa velocidad no puede ser negativa");
+            model.cambiarVelocidad(coche.matricula, 0);
         }
     }
 }
