@@ -11,11 +11,22 @@ import java.util.ArrayList;
  * El Model será el encargado de notificar a los observadores
  */
 public class Model implements Observable {
+    private static Model instance = null;
+
     // array de coches
     static ArrayList<Coche> parking = new ArrayList<>();
 
     // para los observadores
     private static final ArrayList<Observer> observers = new ArrayList<Observer>();
+
+    private Model(){ }
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
 
     @Override
     public void addObserver(Observer observer) {
@@ -65,6 +76,28 @@ public class Model implements Observable {
             }
         }
         return aux;
+    }
+
+    /**
+     * Sube la velocidad de un coche
+     * @param matricula del coche
+     * @param v velocidad a subir
+     */
+    public void subirVelocidad (String matricula, Integer v) {
+        Coche coche = getCoche(matricula);
+        coche.velocidad+=v;
+        notifyObservers(coche, this);
+    }
+
+    /**
+     * Baja la velocidad de un coche
+     * @param matricula del coche
+     * @param v velocidad a bajar
+     */
+    public void bajarVelocidad(String matricula, Integer v) {
+        Coche coche = getCoche(matricula);
+        coche.velocidad-=v;
+        notifyObservers(coche, this);
     }
 
     /**

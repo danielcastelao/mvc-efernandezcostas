@@ -11,7 +11,7 @@ class ModelTest {
 
     @BeforeEach
     void setUp() {
-        model = new Model();
+        model = Model.getInstance();
     }
 
     @Test
@@ -37,6 +37,29 @@ class ModelTest {
         model.cambiarVelocidad("1234ABC", 180);
         Integer velocidad = model.getVelocidad("1234ABC");
         assertEquals(180, velocidad);
+    }
+
+    /**
+     * Test unitario para comprobar que la velocidad se sube correctamente
+     */
+    @Test
+    public void subirVelocidadCocheCorrectamente() {
+        model.crearCoche("TestCar", "1234");
+        model.subirVelocidad("1234", 10);
+        Coche coche = model.getCoche("1234");
+        assertEquals(10, coche.velocidad);
+    }
+
+    /**
+     * Test unitario para comprobar que la velocidad se baja correctamente
+     */
+    @Test
+    public void bajarVelocidadCocheCorrectamente() {
+        model.crearCoche("TestCar", "1234");
+        model.cambiarVelocidad("1234", 50);
+        model.bajarVelocidad("1234", 10);
+        Coche coche = model.getCoche("1234");
+        assertEquals(40, coche.velocidad);
     }
 
     @Test
